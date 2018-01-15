@@ -1,0 +1,7 @@
+<view class='flex-dirction:row home-container'>
+    <view class='entertype view-row' style="flex-direction:row;">
+        <view>消费</view>
+        <view> | </view>
+        <view>收入</view>
+    </view>
+</view>
