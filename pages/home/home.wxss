@@ -3,6 +3,7 @@
   padding-top: 30%;
   padding-left: 14%;
   padding-right: 14%;
+  height: auto;
   
 }
 .view-row{
@@ -11,10 +12,76 @@
 }
 
 .entertype-line{
-  
+  width:1px;
+  height:26px;
+  margin:0px auto;
+  padding:0px;
+  background-color:#D5D5D5;
+  overflow:hidden;
 }
 .entertype{
   width: 100px;
-  height: 10px;
+  height: 0px auto;
   text-align:center;
+}
+.input-money{
+  margin-top: 10px;
+  height: 80px;
+  border: 1px solid #D5D5D5;
+  border-radius: 5px;
+}
+.input-money-enter{
+  height: auto;
+  width: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  position:relative;
+  bottom: 0px;
+  top: 10px;
+  font-size: 40px;
+  color: #FF9933 ;
+  text-align: right;
+}
+.input-money-pic{
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  padding: 0px;
+  position:relative;
+  top: 20px;
+}
+.choose-view{
+  margin-top: 15px;
+  height: 30px;
+  width: 100%;
+  border: 1px solid #D5D5D5;
+  border-radius: 5px;
+
+  text-align: center;
+  font-size: 21px;
+  color:  #D5D5D5;
+}
+.submit-view{
+  height: 40px;
+  width: 100%;
+  background-color: #33CC33;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+.submit-view-click{
+  background: #D5D5D5;
+}
+
+.submit-view-pic{
+  height: 30px;
+  width: 30px;
+  margin-top: 5px;
+  margin-left: 90px;
+}
+.submit-view-text{
+  color: #ffffff;
+  font-size: 21px;
+  margin-left: 15px;
+  position: relative;
+  bottom: 6px;
 }

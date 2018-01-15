@@ -1,7 +1,24 @@
 <view class='flex-dirction:row home-container'>
-    <view class='entertype view-row' style="flex-direction:row;">
-        <view>消费</view>
-        <view> | </view>
-        <view>收入</view>
+    <view class='entertype view-row'>
+      <view>消费</view>
+      <view class='entertype-line'>  </view>
+      <view>收入</view>
+    </view>
+    <view class='input-money view-row'>
+    <input class='input-money-enter' type='digit' maxlength='7' ></input>
+    <image src='./money.svg' class='input-money-pic'></image>
+    </view>
+    <!--选择器-->
+    <view class='choose-view'>
+    
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{typeArray}}">
+        <view>
+        {{typeArray[index]}}
+        </view>
+      </picker>
+    </view>
+    <view class='{{sumbitBtnCss}}'  bindtap='submitClick'>
+      <image src='submit.svg' class='submit-view-pic'></image>
+      <text class='submit-view-text'>{{sumbitBtnMsg}}</text>
     </view>
 </view>
