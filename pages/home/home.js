@@ -5,40 +5,69 @@ Page({
    * 页面的初始数据
    */
   data: {
+    inputValue:'',
     typeArray:['新建','吃喝','其他'],
     sumbitBtnCss:'submit-view',
+    sumbitBtnBind:'submitClick',
     sumbitBtnMsg:'提交',
-    index: 0
+    index: 0,
+    submitTipVisibile:true,
+    submitTips:'提交成功'
     
   },
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+  
     this.setData({
       index: e.detail.value
+    })
+  },
+  bindKeyInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
     })
   },
   submitClick: function(){
     this.setData({
       sumbitBtnCss : 'submit-view submit-view-click',
-      sumbitBtnMsg : '提交中...'
+      sumbitBtnMsg : '提交中...',
+      sumbitBtnBind : '',
+      submitTipVisibile :false
     });
-    this.httprequst();
+    this.httprequst(this);
     
   },
   /**
    * 网络请求
    */
-  httprequst : function(){
+  httprequst : function(instance){
     var instanceApp = getApp();
     wx.request({
-      url: instanceApp.data.path, //仅为示例，并非真实的接口地址
+      url: instanceApp.data.path + '/menu/income', //仅为示例，并非真实的接口地址
       data: {
+        money: this.data.inputValue,
+        type: this.data.typeArray[this.data.index]
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log(res.data)
+        console.log(res.data);
+        instance.setData({
+          submitTips: res.data.res?'提交成功':'提交失败',
+          sumbitBtnMsg: '提交',
+          submitTipVisibile : true,
+          sumbitBtnCss: 'submit-view',
+          sumbitBtnBind: 'submitClick'
+        })
+      },
+      fail:function(){
+        instance.setData({
+          submitTips: '网络错误',
+          sumbitBtnMsg: '提交',
+          submitTipVisibile: true,
+          sumbitBtnCss: 'submit-view',
+          sumbitBtnBind: 'submitClick'
+        })
       }
     })
   },

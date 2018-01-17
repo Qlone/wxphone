@@ -85,3 +85,25 @@
   position: relative;
   bottom: 6px;
 }
+.submit-tips-view{
+  margin-top: 15px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+}
+.submit-tips-msg{
+  font-size: 16px;
+  margin-left: 60px;
+  color: red;
+}
+.submit-tips-link{
+  font-size: 16px;
+  padding-left: 5px;
+  color: #66ccff;
+}
+.visible{
+  display: inline;
+}
+.invisible{
+  display: none;
+}

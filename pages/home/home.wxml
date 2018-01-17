@@ -5,7 +5,7 @@
       <view>收入</view>
     </view>
     <view class='input-money view-row'>
-    <input class='input-money-enter' type='digit' maxlength='7' ></input>
+    <input class='input-money-enter' bindinput='bindKeyInput' type='digit' maxlength='7' value='{{inputValue}}' ></input>
     <image src='./money.svg' class='input-money-pic'></image>
     </view>
     <!--选择器-->
@@ -17,8 +17,12 @@
         </view>
       </picker>
     </view>
-    <view class='{{sumbitBtnCss}}'  bindtap='submitClick'>
+    <view class='{{sumbitBtnCss}}'  bindtap='{{sumbitBtnBind}}'>
       <image src='submit.svg' class='submit-view-pic'></image>
       <text class='submit-view-text'>{{sumbitBtnMsg}}</text>
+    </view>
+    <view class="view-row submit-tips-view " >
+      <text class="submit-tips-msg {{submitTipVisibile?'visible':'invisible'}}">{{submitTips}}</text>
+      <navigator class="submit-tips-link {{submitTipVisibile?'visible':'invisible'}}" url="/pages/bill_list/bill" hover-class='other-navigator-hover'>点击查看</navigator>
     </view>
 </view>
