@@ -5,7 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    item_distance : 20,
+    touch :{
+      startX : 0,
+      startX : 0
+    }
+  },
+
+  handletouchmove: function (event) {
+    var i = this.data.item_distance +1;
+    this.setData({
+      item_distance: i
+    });
+    console.log(this.data.item_distance);
+  },
+  handletouchstart: function (event){
+    console.log(event)
+    this.setData({
+      touch :{
+        startX: event.touches[0].pageY,
+        startX: event.touches[0].pageX
+      }
+    });
   },
 
   /**
