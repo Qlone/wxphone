@@ -1,15 +1,15 @@
 <!--pages/bill_list/bill.wxml-->
 
 <scroll-view  scroll-y>
-  <view class='item-block box-shadow-3 view-row' style='margin-top: {{item_distance}}px;'  bindtouchstart='handletouchstart' bindtouchmove='handletouchmove' bindtouchend='handletouchend' wx:for="{{[1,2,3,4,5,6,7,8]}}">
+  <view class='item-block box-shadow-3 view-row' style='margin-top: {{item_distance}}px;'  bindtouchstart='handletouchstart' bindtouchmove='handletouchmove' bindtouchend='handletouchend' wx:for="{{billList}}">
     <view class='item-money-view'>
-      <text class='item-money'>+ 178.00</text>
+      <text class='item-money' decode='true'>{{item.money>0?'+':'- '}}&ensp;{{item.money>0?item.money:-item.money}}</text>
     </view>
     <view class='item-block-right'>
       <view class='item-type-view'>
-        吃喝
+        {{item.type}}
       </view>
-      <view class='item-data-view'>2017-3-2 12:00:11</view>
+      <view class='item-data-view'>{{item.createdDate}}</view>
     </view>
   </view>
 </scroll-view>

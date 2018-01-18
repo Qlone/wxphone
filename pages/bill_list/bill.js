@@ -6,6 +6,8 @@ Page({
    */
   data: {
     item_distance : 20,
+    billList:{
+    },
     touch :{
       startX : 0,
       startX : 0,
@@ -49,7 +51,24 @@ Page({
     }
     
   },
+  httpGetBill: function(that){
+    wx.request({
+      url: getApp().data.path + "/data/bill",
+      data:{
 
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function(res){
+        
+        that.setData({
+          billList: res.data.res
+        });
+        console.log(that.data.billList);
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -61,7 +80,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.httpGetBill(this);
   },
 
   /**
