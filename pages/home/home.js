@@ -6,14 +6,16 @@ Page({
    */
   data: {
     inputValue:'',
-    typeArray:['新建','吃喝','其他'],
+    typeArray:['获取类型中...','吃喝','其他'],
     sumbitBtnCss:'submit-view',
     sumbitBtnBind:'submitClick',
     sumbitBtnMsg:'提交',
     index: 0,
-    submitTipVisibile:true,
-    submitTips:'提交成功'
-    
+    submitTipVisibile:false,
+    submitTips:'提交成功',
+    isIncome:false,
+    newType: false,
+    newTypeText:'新的类型'
   },
   bindPickerChange: function (e) {
   
@@ -24,6 +26,11 @@ Page({
   bindKeyInput: function (e) {
     this.setData({
       inputValue: e.detail.value
+    })
+  },
+  bindtypeinput: function(e){
+    this.setData({
+      newTypeText: e.detail.value
     })
   },
   submitClick: function(){
@@ -44,14 +51,18 @@ Page({
     wx.request({
       url: instanceApp.data.path + '/menu/income', //仅为示例，并非真实的接口地址
       data: {
-        money: this.data.inputValue,
-        type: this.data.typeArray[this.data.index]
+        money: this.data.isIncome ? this.data.inputValue : -1*this.data.inputValue,
+        type: this.data.newType ? this.data.newTypeText : this.data.typeArray[this.data.index],
+        newType: this.data.newType
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
         console.log(res.data);
+        if (instance.data.newType){
+          instance.initType();
+        }
         instance.setData({
           submitTips: res.data.res?'提交成功':'提交失败',
           sumbitBtnMsg: '提交',
@@ -71,6 +82,46 @@ Page({
       }
     })
   },
+  chooseIncome:function(){
+    this.setData({
+      isIncome: true
+    })
+  },
+  chooseConSume: function () {
+    this.setData({
+      isIncome: false
+    })
+  },
+  newTypeSwitch: function(){
+    this.setData({
+      newType: !this.data.newType
+    })
+  },
+  initType:function(){
+    var that = this;
+    wx.request({
+      url: getApp().data.path + '/menu/type', //仅为示例，并非真实的接口地址
+      data: {
+        
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data.res);
+        var list = [];
+        for(var value in res.data.res){
+          list.push(res.data.res[value].type);
+          that.setData({
+            typeArray: list
+          })
+        }
+      },
+      fail: function () {
+        
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -82,7 +133,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.initType();
   },
 
   /**

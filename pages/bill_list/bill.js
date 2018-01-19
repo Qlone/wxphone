@@ -6,6 +6,7 @@ Page({
    */
   data: {
     item_distance : 20,
+    page : 1,
     billList:{
     },
     touch :{
@@ -53,7 +54,7 @@ Page({
   },
   httpGetBill: function(that){
     wx.request({
-      url: getApp().data.path + "/data/bill",
+      url: getApp().data.path + "/data/bill/"+ this.data.page,
       data:{
 
       },
@@ -64,6 +65,25 @@ Page({
         
         that.setData({
           billList: res.data.res
+        });
+        console.log(that.data.billList);
+      }
+    })
+  },
+  scrolltolower: function(){
+    var that = this;
+    wx.request({
+      url: getApp().data.path + "/data/bill/" + ++this.data.page,
+      data: {
+
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        var list = that.data.billList.concat(res.data.res);
+        that.setData({
+          billList: list
         });
         console.log(that.data.billList);
       }

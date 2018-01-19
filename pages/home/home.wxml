@@ -1,21 +1,24 @@
 <view class='flex-dirction:row home-container'>
     <view class='entertype view-row'>
-      <view>消费</view>
+      <view bindtap='chooseConSume' style="{{isIncome?'color:#D5D5D5':'color:#33CC33'}}">消费</view>
       <view class='entertype-line'>  </view>
-      <view>收入</view>
+      <view bindtap='chooseIncome' style="{{isIncome?'color:#33CC33':'color:#D5D5D5'}}">收入</view>
     </view>
     <view class='input-money view-row'>
-    <input class='input-money-enter' bindinput='bindKeyInput' type='digit' maxlength='7' value='{{inputValue}}' ></input>
+    <input class='input-money-enter' style="{{isIncome?'color:#33CC33':''}}" bindinput='bindKeyInput' type='digit' maxlength='7' value='{{inputValue}}' ></input>
     <image src='./money.svg' class='input-money-pic'></image>
     </view>
     <!--选择器-->
-    <view class='choose-view'>
-    
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{typeArray}}">
-        <view>
-        {{typeArray[index]}}
-        </view>
-      </picker>
+    <view class='view-row choose-view-block'>
+      <image bindtap='newTypeSwitch' src="{{newType?'./cancel.svg':'./add.svg'}}" class='add-img'></image>
+      <view class='choose-view'>
+        <picker class="{{newType?'invisible':'visible'}}" bindchange="bindPickerChange" value="{{index}}" range="{{typeArray}}">
+          <view>
+          {{typeArray[index]}}
+          </view>
+        </picker>
+        <input class="{{newType?'visible':'invisible'}}"  value='{{newTypeText}}' bindinput='bindtypeinput'></input>
+      </view>
     </view>
     <view class='{{sumbitBtnCss}}'  bindtap='{{sumbitBtnBind}}'>
       <image src='submit.svg' class='submit-view-pic'></image>
@@ -23,6 +26,10 @@
     </view>
     <view class="view-row submit-tips-view " >
       <text class="submit-tips-msg {{submitTipVisibile?'visible':'invisible'}}">{{submitTips}}</text>
-      <navigator class="submit-tips-link {{submitTipVisibile?'visible':'invisible'}}" url="/pages/bill_list/bill" hover-class='other-navigator-hover'>点击查看</navigator>
     </view>
+    <navigator class='menu-bill-link'url="/pages/bill_list/bill" hover-class='other-navigator-hover'>
+      <view class='menu-bill-link-text'>账单
+      </view>
+    </navigator>
+
 </view>

@@ -50,8 +50,11 @@
   position:relative;
   top: 20px;
 }
+.choose-view-block{
+   margin-top: 15px;
+}
 .choose-view{
-  margin-top: 15px;
+  margin-left: 10px;
   height: 30px;
   width: 100%;
   border: 1px solid #D5D5D5;
@@ -87,6 +90,7 @@
 }
 .submit-tips-view{
   margin-top: 15px;
+  margin-left: 45px;
   height: auto;
   width: 100%;
   text-align: center;
@@ -96,14 +100,30 @@
   margin-left: 60px;
   color: red;
 }
-.submit-tips-link{
-  font-size: 16px;
-  padding-left: 5px;
-  color: #66ccff;
-}
 .visible{
   display: inline;
 }
 .invisible{
   display: none;
+}
+.menu-bill-link{
+  position: relative;
+  top:40px;
+  left: 105px;
+  height: 55px;
+  width: 55px;
+  border-radius: 55px;
+  border: 2px solid #33CC33;
+  text-align: center;
+}
+.menu-bill-link-text{
+  margin-top: 14px;
+  font-size: 16px;
+  text-align: center;
+  color: #33CC33;
+}
+.add-img{
+  height: 30px;
+  width: 30px;
+
 }

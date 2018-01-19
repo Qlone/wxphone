@@ -1,9 +1,9 @@
 <!--pages/bill_list/bill.wxml-->
 
-<scroll-view  scroll-y>
+<scroll-view  scroll-y class='touch-view' bindscrolltolower='scrolltolower'>
   <view class='item-block box-shadow-3 view-row' style='margin-top: {{item_distance}}px;'  bindtouchstart='handletouchstart' bindtouchmove='handletouchmove' bindtouchend='handletouchend' wx:for="{{billList}}">
     <view class='item-money-view'>
-      <text class='item-money' decode='true'>{{item.money>0?'+':'- '}}&ensp;{{item.money>0?item.money:-item.money}}</text>
+      <text class='item-money' style="{{item.money>0?'color:#76EE00':'color:#FFA500'}}" decode='true'>{{item.money>0?'+':'- '}}&ensp;{{item.money>0?item.money:-item.money}}</text>
     </view>
     <view class='item-block-right'>
       <view class='item-type-view'>
