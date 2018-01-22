@@ -1,4 +1,6 @@
 // pages/home/home.js
+
+const app = getApp()
 Page({
 
   /**
@@ -53,7 +55,8 @@ Page({
       data: {
         money: this.data.isIncome ? this.data.inputValue : -1*this.data.inputValue,
         type: this.data.newType ? this.data.newTypeText : this.data.typeArray[this.data.index],
-        newType: this.data.newType
+        newType: this.data.newType,
+        userId : app.globalData.userId
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -102,7 +105,7 @@ Page({
     wx.request({
       url: getApp().data.path + '/menu/type', //仅为示例，并非真实的接口地址
       data: {
-        
+        userId : app.globalData.userId
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -112,10 +115,10 @@ Page({
         var list = [];
         for(var value in res.data.res){
           list.push(res.data.res[value].type);
-          that.setData({
-            typeArray: list
-          })
-        }
+        };
+        that.setData({
+          typeArray: list
+        })
       },
       fail: function () {
         

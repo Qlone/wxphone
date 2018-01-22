@@ -1,4 +1,6 @@
 // pages/bill_list/bill.js
+
+const app = getApp();
 Page({
 
   /**
@@ -56,7 +58,7 @@ Page({
     wx.request({
       url: getApp().data.path + "/data/bill/"+ this.data.page,
       data:{
-
+        userId: app.globalData.userId
       },
       header: {
         'content-type': 'application/json' // 默认值

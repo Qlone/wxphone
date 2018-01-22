@@ -1,0 +1,10 @@
+<!--pages/login/login.wxml-->
+<view class='view-block '>
+  <view class='nick-view '>
+    <input class='nick-input-view' placeholder='激活码' bindinput='bindNickInput'>
+    </input>
+  </view>
+  <view class='confirm-btn' bindtap='bindconfim'>
+  确认
+  </view>
+</view>
