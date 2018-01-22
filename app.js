@@ -1,7 +1,8 @@
 //app.js
 App({
   data : {
-    path: 'http://localhost:8080'
+    path: 'https://miss-rabbit.cc/m'
+    
   },
   onLaunch: function () {
     // 展示本地存储能力
