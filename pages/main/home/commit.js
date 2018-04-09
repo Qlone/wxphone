@@ -1,5 +1,6 @@
 const app = getApp();
 const count = require('../home/count.js');
+const util = require('../../../utils/util.js')
 const commit = (that,money,typeNames) => {
   that.setData({
     commitSignal: {
@@ -7,13 +8,19 @@ const commit = (that,money,typeNames) => {
       msg: '提交中...'
     }
   })
+  var str ='';
+  for (var i in typeNames){
+    str = str + typeNames[i] + ',';
+  }
+  str = str.substring(0, str.length - 1)
+
   //获取这个月
   wx.request({
     url: getApp().data.path + '/bill/add', //仅为示例，并非真实的接口地址
     data: {
       token: app.globalData.userId,
       money: money,
-      type: typeNames
+      type: str
     },
     header: {
       'content-type': 'application/json' // 默认值

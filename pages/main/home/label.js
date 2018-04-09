@@ -1,4 +1,5 @@
 const app = getApp();
+const util = require('../../../utils/util.js')
 const getType = that => {
   that.setData({
     typeArray: ['获取中...'],

@@ -15,7 +15,7 @@ Page({
       yestoday: 0,
       today: 0
     },
-    
+    limitPrice: 100,
     typeArray: ['获取中...'],
     chooseType: [],
     firstChoose:true,
@@ -36,6 +36,10 @@ Page({
     commitSignal:{
       code: '101',
       msg: '提交'
+    },
+    changeLimit:{
+      code: '101',
+      msg: '修改限定'
     }
   },
   //获取统计----------------start
@@ -101,6 +105,37 @@ Page({
       moneyAdd: !this.data.moneyAdd
     })
   },
+  //绑定 修改限定按钮
+  bindChangeLimit:function(){
+    this.setData({
+      changeLimit: {
+        code: '102',
+        msg: '确定'
+      }
+    })
+  },
+  bindLimitInput: function (e) {
+    this.setData({
+      limitPrice: parseInt(e.detail.value)
+    })
+  },
+  bindChangeConfirm:function(){
+    try{
+      wx.setStorageSync('limitPrice', this.data.limitPrice);
+    }catch(e){
+      wx.showToast({
+        title: '保存失败',
+        icon: 'none',
+        duration: 1500
+      })
+    }
+    this.setData({
+      changeLimit: {
+        code: '101',
+        msg: '修改限定'
+      }
+    })
+  },
   bindSummit:function(){
     if(this.data.money == 0 || this.data.money == null){
       wx.showToast({
@@ -147,8 +182,23 @@ Page({
     this.bindconfim();
     //获取标签
     label.getType(this);
-    
- 
+
+    try {
+      var value = wx.getStorageSync('limitPrice');
+      if (value) {
+        this.setData({
+          limitPrice: parseInt(value)
+        })
+
+      }
+    } catch (e) {
+      this.setData({
+        limitPrice: 1100
+      })
+    }
+
+
+   
   },
 
   /**

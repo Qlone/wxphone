@@ -1,0 +1,25 @@
+<!--pages/main/list/bill.wxml-->
+<scroll-view  scroll-y class='body' bindscrolltolower='onBindScroll'>
+
+  <view class='bill-item-body view-row' wx:for="{{list}}">
+    <view class='bill-item-money-des' style="{{item.money > 0 ? 'color:#33CC33':'color:#FF9933'}}">
+    {{item.money > 0 ? '产出' : '消耗'}}
+    </view>
+    <view class='bill-item-money-text' style="{{item.money > 0 ? 'color:#33CC33':'color:#FF9933'}}">
+    {{item.money > 0 ? item.money : item.money * -1}}
+    </view>
+    <!--标签-->
+    <view class='bill-item-type-body view-row-wrap'>
+      <view wx:for="{{item.type}}" wx:for-item="items" class='bill-item-type' style="{{item.money > 0 ? 'background-color:#33CC33':'background-color:#FF9933'}}">
+        {{items}}
+      </view>
+    </view>
+    <!--日期-->
+    <view class='bill-item-date'>
+    {{item.datetime}}
+    </view>
+  </view>
+
+  
+</scroll-view>
+

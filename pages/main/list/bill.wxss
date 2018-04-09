@@ -1,0 +1,67 @@
+/* pages/main/list/bill.wxss */
+.body{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+.view-row{
+  display: flex;
+  flex-direction:row;
+}
+.view-row-wrap{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+/**
+* 卡片
+*/
+.bill-item-body{
+  height: auto;
+  border: 1px solid #D5D5D5;
+  margin: 8px 8px 8px 8px;
+  border-radius: 10px;
+  position:relative;
+}
+.bill-item-money-text{
+  height: auto;
+   width: auto;
+  line-height: 80px;
+  font-size: 30px;
+  margin-right: 20px;
+  margin-left: 10px
+}
+.bill-item-money-des{
+  height: auto;
+  width: 10%;
+  line-height: 80px;
+  font-size: 15px;
+  margin-left: 20px;
+}
+.bill-item-date{
+  position: relative;
+  font-size: 12px;
+
+}
+.bill-item-date{
+  width: auto;
+  position:absolute;
+  font-size: 14px;
+  color: #C0C0C0;
+  right: 10px;
+  bottom: 6px;
+}
+.bill-item-type-body{
+  height: auto;
+  width: 60%;
+  margin-bottom: 32px;
+}
+.bill-item-type{
+  height: 25px;
+  line-height: 25px;
+  color: #ffffff;
+  font-size: 14px;
+  margin: 15px 7px 0px 7px;
+  padding: 0px 5px 0px 5px;
+  border-radius: 5px;
+}

@@ -1,12 +1,20 @@
 <!--pages/main/home/home.wxml-->
-<view>
-<text>当月限定: {{count.month}}</text>
-</view>
-<view>
-<text>昨日消耗: {{count.yestoday}}</text>
-</view>
-<view>
-<text>今日消耗: {{count.today}}</text>
+<view class='home-center-body'>
+  <view class='view-row'>
+  <text class='head-msg-tips'>当月限定:</text><text  style="{{limitPrice + count.month > 0 ? 'color:#33CC33':'color:#FF0000'}} " class="{{changeLimit.code == 101?  'visible' : 'invisible'}} head-msg-money">{{limitPrice + count.month > 0 ? limitPrice + count.month : (limitPrice + count.month) * -1}}</text>
+  <input type='digit' maxlength = '7' class="{{changeLimit.code == 102?  'visible' : 'invisible'}} head-msg-input" bindinput='bindLimitInput' value='{{limitPrice}}'>
+  </input>
+  <!--修改按钮-->
+  <view class='hend-msg-change'  bindtap="{{changeLimit.code == 101? 'bindChangeLimit' :'bindChangeConfirm'}}">
+  {{changeLimit.msg}}
+  </view>
+  </view>
+  <view class='view-row'>
+  <text class='head-msg-tips'>昨日消耗:</text><text class='head-msg-money' style="{{count.yestoday > 0 ? 'color:#33CC33':'color:#FF9933'}}">{{count.yestoday > 0 ? count.yestoday : count.yestoday * -1}}</text>
+  </view>
+  <view class='view-row'>
+  <text class='head-msg-tips'>今日消耗:</text><text class='head-msg-money' style="{{count.today > 0 ? 'color:#33CC33':'color:#FF9933'}}">{{count.today > 0 ? count.today : count.today * -1}}</text>
+  </view>
 </view>
 
 <!--中间空间容器-->
@@ -78,4 +86,17 @@
   <image class='home-btn-img' src='./submit.svg'>
   </image>
   <text class='home-btn-text' >{{commitSignal.msg}}</text>
+</view>
+
+<!-- **************账单**************-->
+<view class='view-row'>
+  <navigator class='menu-bill-link'url="/pages/main/list/bill" hover-class='other-navigator-hover'>
+        <view class='menu-bill-link-text'>账单
+        </view>
+  </navigator>
+  <view class='menu-bill-link'>
+    <view class='menu-bill-link-text'>注销
+        </view>
+  </view>
+
 </view>
