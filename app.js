@@ -1,7 +1,7 @@
 //app.js
 App({
   data : {
-    path: 'https://miss-rabbit.cc/m'
+    path: 'https://miss-rabbit.cc'
     
   },
   onLaunch: function () {

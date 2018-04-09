@@ -14,6 +14,13 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const redirectLogin =()=>{
+  wx.redirectTo({
+    url: '/pages/login/login'
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  redirectLogin: redirectLogin
 }
