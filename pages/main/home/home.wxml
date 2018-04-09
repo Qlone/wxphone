@@ -1,0 +1,81 @@
+<!--pages/main/home/home.wxml-->
+<view>
+<text>当月限定: {{count.month}}</text>
+</view>
+<view>
+<text>昨日消耗: {{count.yestoday}}</text>
+</view>
+<view>
+<text>今日消耗: {{count.today}}</text>
+</view>
+
+<!--中间空间容器-->
+<view class='home-center-body view-row'>
+  <!--金钱输入框左部选择器-->
+  <view class='home-money-choose' style="{{moneyAdd? 'background-color:#33CC33':'background-color:#FF9933'}}" bindtap='bindMoneyAdd'>
+    {{moneyAdd? '收入':'消费'}}
+  </view>
+   <!--金钱输入框-->
+  <view class='home-money  view-row'>
+    <input type ='digit' maxlength='7'value="{{money}}" class='home-money-input' style="{{moneyAdd? 'color:#33CC33':'color:#FF9933'}}" bindinput='bindMoney'>
+    </input>
+    <image class='home-money-input-img' src='./money.svg' >
+    </image>
+  </view>
+  
+</view>
+<!--标签-->
+<view class='home-type-body'>
+  <view class='view-row-wrap'>
+    <view wx:for="{{chooseType}}" wx:for-index="index" data-typeindex="{{index}}" bindtap="bindType" class='home-type-item'>
+     {{item}}
+    </view>
+  </view>
+</view>
+
+<!--  选择框 -->
+<view class='home-center-body view-row'>
+    <!--正常选择模式 state 0-->
+    <image class="home-add-img {{state == 0 ? 'visible' : 'invisible'}}"  src='./add.svg' bindtap='bindAddBtn'>
+    </image>
+    <view class="home-choose-box {{state == 0 ? 'visible' : 'invisible'}}" >
+        <picker class='home-choose-text' bindchange="bindPickerChange" value="{{index}}" range="{{typeArray}}">
+            <view>
+            {{typeArray[index]}}
+            </view>
+        </picker>
+    </view>
+    <!--确定按钮-->
+    <view class="home-choose-btn {{state == 0 ? 'visible' : 'invisible'}}" bindtap='bindEditBtn'>编辑</view>
+
+    
+    <!--删除模式 state 1-->
+    <image class="home-add-img {{state == 1 ? 'visible' : 'invisible'}}" src='./delete.svg' bindtap='bindDelete'>
+    </image>
+    <view class="home-choose-edit {{state == 1 ? 'visible' : 'invisible'}}">
+       <picker class='home-choose-text' bindchange="bindPickerEditChange" value="{{index}}" range="{{typeArray}}">
+            <view>
+            {{typeArray[index]}}
+            </view>
+        </picker>
+    </view>
+    <view class="home-return-btn {{state == 1 && deleteSignal.code == 101? 'visible' : 'invisible'}}"  bindtap='bindReturnBtn'>{{deleteSignal.msg}}</view>
+    <view class="home-wait-btn {{state == 1  && deleteSignal.code == 102? 'visible' : 'invisible'}}"  bindtap=''>{{deleteSignal.msg}}</view>
+
+    <!-- 添加模式 state2-->
+    <image class="home-add-img {{state == 2 ? 'visible' : 'invisible'}}"  src='./cancel.svg' bindtap='bindCancleBtn'>
+    </image>
+    <view class="home-choose-box {{state == 2 ? 'visible' : 'invisible'}}" >
+        <input placeholder="新类型" maxlength="10" class='home-add-input' bindinput='bindKeyInput' ></input>
+    </view>
+    <!--确定按钮-->
+    <view class="home-choose-btn {{state == 2 && addSignal.code == 101 ? 'visible' : 'invisible'}}" bindtap='bindInputConfirm'>{{addSignal.msg}}</view>
+    <view class="home-wait-btn {{state == 2 && addSignal.code == 102 ? 'visible' : 'invisible'}}" bindtap=''>{{addSignal.msg}}</view>
+</view>
+
+<!--***********提交按钮***************-->
+<view class='home-btn view-row'style="{{commitSignal.code == 101 ? 'background-color:#33CC33':'background-color:#D5D5D5'}}" bindtap="{{commitSignal.code == 101 ?'bindSummit':''}}"> 
+  <image class='home-btn-img' src='./submit.svg'>
+  </image>
+  <text class='home-btn-text' >{{commitSignal.msg}}</text>
+</view>

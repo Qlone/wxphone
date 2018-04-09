@@ -1,0 +1,160 @@
+/* pages/main/home/home.wxss */
+.visible{
+  display: inline;
+}
+.invisible{
+  display: none;
+}
+.home-money{
+  width: 100%;
+  height: 80px;
+  border: 1px solid #D5D5D5;
+  border-radius: 0px 5px 5px 0px; 
+}
+.home-money-input{
+  height: 78px;  
+  font-size: 40px;
+  text-align: right;
+  padding-right: 5px;
+}
+.home-money-input-img{
+  height: 80px;
+  width: 60px;
+  padding-right: 8px;  
+}
+.home-money-choose{
+  height: 82px;
+  background-color: #33CC33;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 25px;
+  display:flex;
+  align-items:center;
+  padding: 0px 10px 0px 10px;
+  border-radius: 5px 0px 0px 5px;   
+}
+.home-center-body{
+  height: auto;
+  margin: 15px 40px 15px 40px;
+}
+.view-row{
+  display: flex;
+  flex-direction:row;
+}
+.view-row-wrap{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+/**
+*标签
+*/
+.home-type-body{
+  height: auto;
+  margin: 0px 40px 0px 40px;
+}
+.home-type-item{
+  width: auto;
+  height: 26px;
+  background: #33CC33;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  padding: 0px 5px 0px 5px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 26px;
+  font-size: 15px;
+  border-radius: 8px 8px 8px 8px;  
+}
+/**
+* 选择器
+*/
+.home-choose-box{
+  height: 30px;
+  width: 100%;
+  border: 1px solid #D5D5D5;
+  border-radius: 8px 0px 0px 8px;  
+}
+.home-choose-btn{
+  height: 32px;
+  width: 80px;
+  background: #33CC33;
+  text-align: center;
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 32px;
+  border-radius: 0px 8px 8px 0px; 
+}
+.home-return-btn{
+  height: 32px;
+  width: 80px;
+  background: #FF0000;
+  text-align: center;
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 32px;
+  border-radius: 0px 8px 8px 0px; 
+}
+.home-wait-btn{
+  height: 32px;
+  width: 80px;
+  background: #D5D5D5;
+  text-align: center;
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 32px;
+  border-radius: 0px 8px 8px 0px; 
+}
+.home-choose-text{
+  height: 32px;
+  line-height: 30px;
+  font-size: 15px;
+  text-align: center;
+  color: #949494
+}
+.home-choose-edit{
+  height: 32px;
+  width: 100%;
+  border: 1px solid #D5D5D5;
+  border-radius: 8px 8px 8px 8px;  
+
+  text-align: center;
+  color: #949494
+}
+.home-choose-edit{
+  height: 30px;
+  width: 100%;
+  border: 1px solid #D5D5D5;
+  border-radius: 8px 0px 0px 8px;  
+}
+.home-add-img{
+  height: 32px;
+  width: 32px;
+  margin-right: 5px;
+}
+.home-add-input{
+  height: 30px;
+  font-size: 15px;
+  text-align: center
+}
+/**
+* 提交按钮
+*/
+.home-btn{
+  height: 40px;
+  margin: 20px 40px 0px 40px;
+  border-radius: 8px 8px 8px 8px;
+  text-align:center;
+}
+.home-btn-img{
+  height: 40px;
+  width: 30px;
+  margin:0 0 0 auto
+}
+.home-btn-text{
+  height: 40px;
+  color: #ffffff;
+  line-height: 40px;
+  margin:0 auto 0 10px;
+}

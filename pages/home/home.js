@@ -103,7 +103,7 @@ Page({
   initType:function(){
     var that = this;
     wx.request({
-      url: getApp().data.path + '/menu/type', //仅为示例，并非真实的接口地址
+      url: getApp().data.path + '/menu/type', 
       data: {
         userId : app.globalData.userId
       },

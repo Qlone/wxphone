@@ -7,53 +7,56 @@ Page({
    */
   data: {
     userInfo: {
-      nick: '',
-      phone: '',
+      account: '',
+      psw: '',
       appId: null,
       userId: null
     },
     nick:''
   },
-  bindNickInput:function(e){
+  bindAccountInput:function(e){
     this.setData({
-      nick : e.detail.value
+      account : e.detail.value
     })
   },
-  bindPhoneInput:function(e){
+  bindPswInput:function(e){
     this.setData({
-      phone : e.detail.value
+      psw : e.detail.value
     })
   },
+
 
   bindconfim: function(){
     var that = this;
     wx.request({
-      url: getApp().data.path +'/user/id', //仅为示例，并非真实的接口地址
+      url: getApp().data.path +'/user/login', //仅为示例，并非真实的接口地址
       data: {
-        activeCode: that.data.nick
+        account: that.data.account,
+        psw: that.data.psw
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        if(res.data.res != null){
+        if (res.data.code == 'USER_SUCCESS'){
           try {     
             that.setData({
               userInfo: {
-                userId: res.data.res
+                userId: res.data.data
               }
             });
-            app.globalData.userId = res.data.res;
-            wx.setStorageSync('userInfo', res.data.res);
-            console.log(res.data.res);
+            app.globalData.userId = res.data.data;
+            wx.setStorageSync('userInfo', res.data.data);
+            console.log(res.data.data);
             wx.redirectTo({
-              url: '../home/home'
+              url: '../main/home/home'
             })
           } catch (e) {
           }
         }else{
+          console.log(res.data);
           wx.showToast({
-            title: '错误激活码',
+            title: '账号密码错误',
             icon: 'none',
             duration: 1500
           })
@@ -77,11 +80,40 @@ Page({
       
       var userId = wx.getStorageSync('userInfo');
       app.globalData.userId = userId;
-      if (userId) {
-        wx.redirectTo({
-          url: '../home/home'
-        })
-      }
+      wx.request({
+        url: getApp().data.path + '/user/check', //仅为示例，并非真实的接口地址
+        data: {
+          token: userId,
+
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          if (res.data.code == 'USER_SUCCESS'){
+            if (userId) {
+              wx.redirectTo({
+                url: '../main/home/home'
+              })
+            }
+          }else{
+            wx.showToast({
+              title: '请重新登录',
+              icon: 'none',
+              duration: 1500
+            })
+          }
+         
+        },
+        fail: function () {
+          wx.showToast({
+            title: '网络连接失败',
+            icon: 'none',
+            duration: 1500
+          })
+        }
+      })
+      
     } catch (e) {
       // Do something when catch error
     }

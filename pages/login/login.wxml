@@ -1,9 +1,14 @@
 <!--pages/login/login.wxml-->
 <view class='view-block '>
   <view class='nick-view '>
-    <input class='nick-input-view' placeholder='激活码' bindinput='bindNickInput'>
+    <input class='nick-input-view' placeholder='账号' bindinput='bindAccountInput'>
     </input>
   </view>
+  <view class='nick-view '>
+    <input class='nick-input-view' placeholder='密码' bindinput='bindPswInput'>
+    </input>
+  </view>
+
   <view class='confirm-btn' bindtap='bindconfim'>
   确认
   </view>
