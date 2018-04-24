@@ -1,5 +1,6 @@
 // pages/main/home/home.js
 const app = getApp();
+const util = require('../../../utils/util.js')
 //logs.js
 const count = require('../home/count.js');
 const label = require('../home/label.js');
@@ -175,11 +176,16 @@ Page({
       chooseType: array
     })
   },
+  //重新登录
+  bindReLogin:function(){
+    wx.setStorageSync('userInfo', '');
+    util.redirectLogin();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.bindconfim();
+    //this.bindconfim();
     //获取标签
     label.getType(this);
 
@@ -212,7 +218,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.bindconfim();
   },
 
   /**

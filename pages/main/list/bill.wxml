@@ -1,7 +1,12 @@
 <!--pages/main/list/bill.wxml-->
 <scroll-view  scroll-y class='body' bindscrolltolower='onBindScroll'>
 
-  <view class='bill-item-body view-row' wx:for="{{list}}">
+  
+  <view class="bill-item-body-contain view-row" wx:for="{{list}}" >
+   <view class="bill-delete-btn" data-id="{{item.idBill}}" style="{{open == item.idBill ? 'display: flex' : 'display: none'}}" bindtap='bindDelete'>
+  删除
+  </view> 
+  <view class="bill-item-body  view-row " bindtap='bindClick' data-id="{{item.idBill}}">
     <view class='bill-item-money-des' style="{{item.money > 0 ? 'color:#33CC33':'color:#FF9933'}}">
     {{item.money > 0 ? '产出' : '消耗'}}
     </view>
@@ -18,6 +23,7 @@
     <view class='bill-item-date'>
     {{item.datetime}}
     </view>
+  </view>
   </view>
 
   

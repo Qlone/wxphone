@@ -9,7 +9,8 @@ Page({
     list:[],
     pageNum: 1,
     pageSize: 10,
-    isEnd:false
+    isEnd:false,
+    open:''
   },
   onBindScroll: function(){
     if (!this.data.isEnd){
@@ -22,7 +23,19 @@ Page({
       })
     }
   },
-
+  bindClick:function(e){
+    var value = e.currentTarget.dataset.id;
+    if (this.data.open == value){
+      value = ''
+    }
+    this.setData({
+      open: value
+    })
+  },
+  bindDelete:function(e){
+    var value = e.currentTarget.dataset.id;
+    server.deleteBill(this,value);
+  },
   /**
    * 生命周期函数--监听页面加载
    */

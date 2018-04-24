@@ -5,11 +5,20 @@
     </input>
   </view>
   <view class='nick-view '>
-    <input class='nick-input-view' placeholder='密码' bindinput='bindPswInput'>
+    <input class='nick-input-view' password="true" placeholder='密码' bindinput='bindPswInput'>
     </input>
   </view>
 
-  <view class='confirm-btn' bindtap='bindconfim'>
-  确认
+  <view class="{{rePsw!=psw?'nick-view-error':'nick-view'}}" style="{{regeister.code == 102 ? 'display: flex' : 'display: none'}}">
+ 
+    <input class='nick-input-view' password="true" placeholder='确认密码' bindinput='bindRePswInput'>
+    </input>
+  </view>
+
+  <view class='confirm-btn' bindtap="{{regeister.code == 101? 'bindconfim':'bindregister'}}">
+  {{regeister.msg}}
+  </view>
+  <view class='register-text' bindtap='bindChangeRegister'>
+  {{regeister.tips}}
   </view>
 </view>

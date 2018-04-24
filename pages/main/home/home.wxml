@@ -90,13 +90,13 @@
 
 <!-- **************账单**************-->
 <view class='view-row'>
+<view class='menu-bill-link' bindtap='bindReLogin'>
+    <view class='menu-bill-link-text'>注销
+        </view>
+  </view>
   <navigator class='menu-bill-link'url="/pages/main/list/bill" hover-class='other-navigator-hover'>
         <view class='menu-bill-link-text'>账单
         </view>
   </navigator>
-  <view class='menu-bill-link'>
-    <view class='menu-bill-link-text'>注销
-        </view>
-  </view>
 
 </view>

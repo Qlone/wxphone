@@ -196,13 +196,13 @@
 .menu-bill-link{
   position: relative;
   top:40px;
-  left: 105px;
+  left: 115px;
   height: 55px;
   width: 55px;
   border-radius: 55px;
   border: 2px solid #33CC33;
   text-align: center;
-  margin: 0 40px 0 40px;
+  margin: 0 10px 0 10px;
 }
 .menu-bill-link-text{
   margin-top: 14px;

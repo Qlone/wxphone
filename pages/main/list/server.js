@@ -56,6 +56,55 @@ const getBillList = that => {
     }
   })
 }
+
+//删除账单
+const deleteBill = (that,idBill) => {
+  //获取这个月
+  wx.request({
+    url: getApp().data.path + '/bill/delete', //仅为示例，并非真实的接口地址
+    data: {
+      token: app.globalData.userId,
+      id: idBill
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      if (res.data.code == 'SUCCESS') {
+        if (res.data.data != null) {
+          wx.showToast({
+            title: '删除成功',
+            icon: 'none',
+            duration: 1500
+          })
+          //重置
+          that.setData({
+            list: [],
+            pageNum: 1
+          })
+          getBillList(that);
+        }
+
+      } else if (res.data.code == 'USER_ILLEGEL') {
+        util.redirectLogin();
+      } else {
+        wx.showToast({
+          title: '获取失败',
+          icon: 'none',
+          duration: 1500
+        })
+      }
+    },
+    fail: function () {
+      wx.showToast({
+        title: '网络连接失败',
+        icon: 'none',
+        duration: 1500
+      })
+    }
+  })
+}
 module.exports = {
-  getBillList: getBillList
+  getBillList: getBillList,
+  deleteBill: deleteBill
 }

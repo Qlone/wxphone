@@ -1,4 +1,10 @@
 /* pages/main/list/bill.wxss */
+.visible{
+  display: inline;
+}
+.invisible{
+  display: none;
+}
 .body{
   height: 100%;
   width: 100%;
@@ -16,8 +22,13 @@
 /**
 * 卡片
 */
+.bill-item-body-contain{
+  height: auto;
+  width: 120%;
+}
 .bill-item-body{
   height: auto;
+  width: 79%;
   border: 1px solid #D5D5D5;
   margin: 8px 8px 8px 8px;
   border-radius: 10px;
@@ -25,7 +36,7 @@
 }
 .bill-item-money-text{
   height: auto;
-   width: auto;
+  width: auto;
   line-height: 80px;
   font-size: 30px;
   margin-right: 20px;
@@ -33,7 +44,7 @@
 }
 .bill-item-money-des{
   height: auto;
-  width: 10%;
+  width: 40px;
   line-height: 80px;
   font-size: 15px;
   margin-left: 20px;
@@ -64,4 +75,16 @@
   margin: 15px 7px 0px 7px;
   padding: 0px 5px 0px 5px;
   border-radius: 5px;
+}
+.bill-delete-btn{
+  height: auto;
+  width: 50px;
+  margin: 9px 0px 8px 9px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: #FF0000;
+  color: #ffffff;
+  font-size: 16px;
+  display: flex;
+  align-items:center;
+  justify-content: center;
 }
